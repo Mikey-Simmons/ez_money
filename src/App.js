@@ -4,8 +4,10 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>Hello World!</h1>
-      <h2>Welcome to ezMoney!</h2>
+      
+      <h1>Welcome to ezMoney!</h1>
+      <h2>An easy to use budget management application.</h2>
+      
     </div>
   );
 }
