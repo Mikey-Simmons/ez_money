@@ -18,17 +18,12 @@ function App() {
   };
 
   return (
+    <div className="bigContainer">
     <div className="App">
-      <h1>Welcome to ezMoney!</h1>
+      <div className="mainContainer">
+      <h1>ezMoney!</h1>
 
-      <h2>An easy to use budget management application.</h2>
-
-      <h2>{total}</h2>
-      <ul>
-        {bills.map(bill=>(
-          <li> {bill.name}{bill.amount}</li>
-        ))}
-      </ul>
+      
       <input
         type="number"
         id="amount"
@@ -39,6 +34,29 @@ function App() {
       <button onClick={handleClick} type="submit">
         Add
       </button>
+      <div className="container">
+      <table class="table table-bordered table-sm">
+
+        <tr>
+          <th scope="col">Expense/Income</th>
+          <th scope="col">Amount</th>
+        </tr>
+        
+        
+        {bills.map(bill=>(
+          <tr>
+          <td >{bill.name}</td>
+          <td >{bill.amount}</td>
+          </tr>
+          ))}
+          
+        
+      </table>
+      
+      <h2>{total}</h2>
+      </div>
+      </div>
+    </div>
     </div>
   );
 }
