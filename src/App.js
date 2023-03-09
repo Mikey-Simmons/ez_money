@@ -1,33 +1,44 @@
-import './App.css';
-import {React, useState} from 'react'
+import "./App.css";
+import { React, useState } from "react";
 function App() {
-  const [amount, setAmount] = useState(null);
+  const [amount, setAmount] = useState(0);
+  const [name, setName] = useState("");
+  const [total, setTotal] = useState(0);
+  const [bills, setBills] = useState([]);
   const handleSubmit = (event) => {
-    event.preventDefault();
-    setAmount(amount);
-    bills.push(amount);
+    setAmount(parseInt(event.target.value));
+  };
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
+  const handleClick = () => {
+    setBills([...bills, { name:  name , amount: parseInt( amount ) }]);
+    setTotal(total + amount);
     console.log(bills);
-    for(var i =1;i<bills.length;i++){
-      var total = parseInt(bills[i])+parseInt(bills[i-1]);
-    }
-    console.log(total)
-  }
-  var bills = [];
-  
+  };
+
   return (
     <div className="App">
-      
       <h1>Welcome to ezMoney!</h1>
 
       <h2>An easy to use budget management application.</h2>
-      <h2>{amount}</h2>
-      <form onSubmit={handleSubmit}>
-        <input onChange={(event)=> setAmount(event.target.value)} id='amounted' name='amounted'></input>
-        <button   type="submit">Add</button>
 
-      </form>
-      
-      
+      <h2>{total}</h2>
+      <ul>
+        {bills.map(bill=>(
+          <li> {bill.name}{bill.amount}</li>
+        ))}
+      </ul>
+      <input
+        type="number"
+        id="amount"
+        onChange={handleSubmit}
+        name="amount"
+      ></input>
+      <input type="text" id="name" onChange={e => setName(e.target.value)} name="name"></input>
+      <button onClick={handleClick} type="submit">
+        Add
+      </button>
     </div>
   );
 }
